@@ -35,7 +35,7 @@ chrome=webdriver.Chrome('/Users/aadharsachdeva/Downloads/chromedriver')
 links_data=[]
 error=[]
 lolo=5006
-for link in links[5005:6006]:
+for link in links:
     try:
         try:
             chrome.get(link)
@@ -58,17 +58,13 @@ for link in links[5005:6006]:
                 tmp=buu(chrome.page_source)
                 data.append(re.search(r'(#.*)\)',tmp.find('div',class_='commit-branches').text).group(1))
             except:
-                data.append("NA")
-                '''
                 try:
-                    print("LOL")
                     sleep(0.5)
                     chrome.refresh()
                     tmp=buu(chrome.page_source)
                     data.append(re.search(r'(#.*)\)',tmp.find('div',class_='commit-branches').text).group(1))
                 except:
                     data.append('NA')
-                '''
         a=tmp.find_all('a',class_='user-mention')
         data.append(len(a))
         data.append([i.text for i in a])
